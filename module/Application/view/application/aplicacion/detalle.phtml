@@ -1,0 +1,62 @@
+<?php
+//var_dump($this->detalle);
+?>
+<div class="col-md-12">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Información del Empleado</h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover" id="dev-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <td><?php echo $this->detalle["name"] ?></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Email</th>
+                        <td><?php echo $this->detalle["email"] ?></td>
+                    </tr>
+                </tbody>
+                <thead>
+                    <tr>
+                        <th>Teléfono</th>
+                        <td><?php echo $this->detalle["phone"] ?></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Dirección</th>
+                        <td><?php echo $this->detalle["address"] ?></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th>Puesto</th>
+                        <td><?php echo $this->detalle["position"] ?></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th>Salario</th>
+                        <td><?php echo $this->detalle["salary"] ?></td>
+                    </tr>
+                </tbody>
+                <tbody>
+                    <tr>
+                        <th>Habilidades</th>
+                        <td><?php
+                            foreach ($this->detalle["skills"] as $skill) {
+                                echo $skill['skill'].' ';
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                </tbody>                
+            </table>
+        </div>
+    </div>
+
+</div> 

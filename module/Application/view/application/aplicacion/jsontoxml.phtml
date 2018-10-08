@@ -1,0 +1,39 @@
+
+<?php
+//print_r($this->xml);
+//exit;
+
+//foreach ($this->xml as $item) {
+//    print_r($item->id);
+//    echo "<br><br>";
+//}
+?>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Email</th>
+        <th>Posicion</th>
+        <th>Salario</th>
+        <th>Detalle</th>
+    </tr>
+    <?php
+    //print_r($usuarios);
+
+    foreach ($this->xml as $item) {
+        ?>
+        <tr>
+            <td><?php echo $item->id ?></td>
+            <td><?php echo $item->name ?></td>
+            <td><?php echo $item->email ?></td>
+            <td><?php echo $item->position ?></td>
+            <td><?php echo $item->salary ?></td>
+            <td><a href="/aplicacion/public/detalle/<?php echo $item->id; ?>" title="Ver detalle" >
+                    Detalle
+                </a>
+            </td>
+        </tr>
+    <?php } ?>
+
+</table>

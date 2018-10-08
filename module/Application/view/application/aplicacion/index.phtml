@@ -1,0 +1,143 @@
+
+
+<?php
+if (!empty($datos->email)) {
+    var_dump($datos->email);
+    ?>
+    <ul>
+        <li>Email: <?= $datos->email ?></li>
+    </ul>
+    <?php
+}
+?>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Búsqueda</h3>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-hover" id="dev-table">
+            <tbody>            
+                <tr>
+                    <td><?php
+                        //inicio formulario
+                        $form = $this->form;
+                        $form->prepare();
+
+//Definimos el atributo action y method
+                        $form->setAttributes(array(
+                            'action' => $this->url . '/',
+                            'method' => 'post'
+                        ));
+
+//Utilizamos el plugin para mostrar los label
+                        $formLabel = $this->plugin('formLabel');
+
+                        echo $this->form()->openTag($form);
+                        ?>
+
+                        <div class="form_element">
+                            <?php
+                            //Imprimimos el campo email
+                            $email = $form->get('email');
+                            echo $formLabel->openTag() . $email->getOption('label') . " ";
+                            echo $this->formInput($email);
+                            echo $formLabel->closeTag();
+                            ?>
+                        </div>
+
+                        <?php
+//Imprimimos el boton de enviar
+                        echo $this->formElement($form->get('submit'));
+
+//Cerramos el formulario
+                        echo $this->form()->closeTag();
+                        ?></td>
+                    <td><?php
+                        $formSalario = $this->formSalario;
+                        $formSalario->prepare();
+
+//Definimos el atributo action y method
+                        $formSalario->setAttributes(array(
+                            'action' => $this->url . '/jsontoxml',
+                            'method' => 'post'
+                        ));
+
+//Utilizamos el plugin para mostrar los label
+                        $formSalarioLabel = $this->plugin('formLabel');
+
+                        echo $this->form()->openTag($formSalario);
+                        ?>
+
+                        <div class="form_element">
+                            <?php
+                            //Imprimimos el campo salario1
+                            $salario1 = $formSalario->get('salario1');
+                            echo $formSalarioLabel->openTag() . $salario1->getOption('label') . " ";
+                            echo $this->formInput($salario1);
+                            echo $formSalarioLabel->closeTag();
+                            //Imprimimos el campo email
+                            $salario2 = $formSalario->get('salario2');
+                            echo $formSalarioLabel->openTag() . $salario2->getOption('label') . " ";
+                            echo $this->formInput($salario2);
+                            echo $formSalarioLabel->closeTag();
+                            ?>
+                        </div>
+
+                        <?php
+//Imprimimos el boton de enviar
+                        echo $this->formElement($formSalario->get('submit'));
+
+//Cerramos el formulario
+                        echo $this->form()->closeTag();
+                        ?></td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Lista de Empleados </h3>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-hover" id="dev-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Posicion</th>
+                    <th>Salario</th>
+                    <th>Detalle</th> 
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                //print_r($usuarios);
+                foreach ($this->resultado as $item) {
+                    ?>
+                    <tr>
+                        <td><?php echo $item['id'] ?></td>
+                        <td><?php echo $item['name'] ?></td>
+                        <td><?php echo $item['email'] ?></td>
+                        <td><?php echo $item['position'] ?></td>
+                        <td><?php echo $item['salary'] ?></td>
+                        <td><a href="/aplicacion/public/detalle/<?php echo $item["id"]; ?>" title="Ver detalle" >
+                                Detalle
+                            </a>
+                        </td>
+                    </tr>
+                <?php } ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
